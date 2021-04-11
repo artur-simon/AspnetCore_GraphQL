@@ -1,3 +1,5 @@
+API disponível em: https://audaces-backend-test.herokuapp.com/
+
 Teste para a vaga de Backend Developer na [NOME DA EMPRESA].
 
 Consiste em uma API em .Net Core e GraphQL.
