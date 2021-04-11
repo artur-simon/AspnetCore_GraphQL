@@ -12,11 +12,13 @@ namespace AspnetCore_GraphQL.Services
     {
         private IList<Numbers> _numbers;
 
+
+        //TODO Construtor com placeholder
         public NumbersService()
         {
             Random random = new Random();
             _numbers = new List<Numbers>();
-            for (int i = 0; i <= 9; i++)
+            for (int i = 0; i <= 3; i++)
             {
                 _numbers.Add(
                     new Numbers()
@@ -27,16 +29,15 @@ namespace AspnetCore_GraphQL.Services
             }
         }
 
-        public Numbers Create(CreateNumbersInput numbersInput)
+        public int[] Create(CreateNumbersInput numbersInput)
         {
             Numbers number = new Numbers
             {
                 Target = numbersInput.Target,
                 Range = numbersInput.Range
             };
-
             _numbers.Add(number);
-            return number;
+            return NumbersCalc.Calculate(number.Range, number.Target);
         }
 
         public IQueryable<Numbers> GetAll()

@@ -16,7 +16,6 @@ namespace AspnetCore_GraphQL.Queries
             _numbersService = numbersService;
         }
         
-        //[UsePaging (SchemaType =  typeof (NumbersType))]
         public IQueryable<Numbers> ListNumbersRequest => _numbersService.GetAll();
     }
 }

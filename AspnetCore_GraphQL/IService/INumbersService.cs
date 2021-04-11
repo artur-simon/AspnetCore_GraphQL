@@ -10,6 +10,6 @@ namespace AspnetCore_GraphQL.IService
     public interface INumbersService
     {
         IQueryable<Numbers> GetAll();
-        Numbers Create(CreateNumbersInput numbersInput);
+        int[] Create(CreateNumbersInput numbersInput);
     }
 }

@@ -14,7 +14,6 @@ namespace AspnetCore_GraphQL.Models
         {
             descriptor.Field(x => x.Target).Type<IntType>();
             descriptor.Field(x => x.Range).Type<ListType<IntType>>();
-            //descriptor.Field<NumbersResolver>(x => x.GetNumbers());
         }
     }
 

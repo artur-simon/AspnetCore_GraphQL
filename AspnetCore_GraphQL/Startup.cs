@@ -56,7 +56,7 @@ namespace AspnetCore_GraphQL
             {
                 endpoints.MapGet("/", async context =>
                 {
-                    await context.Response.WriteAsync("Hello World!");
+                    await context.Response.WriteAsync("Hello from the other side!");
                 });
             });
         }
