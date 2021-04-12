@@ -14,18 +14,17 @@ como no exemplo:
 A API então checa se é possível atingir o número alvo com uma combinação dos números da sequência e, e se possível, ela retorna essa combinação.
 
 A aplicação possui o(s) seguinte(s) endpoint(s):
-<ol>
- <li>
-  mutation 
+mutation 
 {
-  createNumbers
+  combination
   (
-    numbersInput:  
+    input:
     {
-      target : int!,
-      range : [int!]
+      target : 232,
+      range : [11,111]
     }
   )
 }
+<ul>Para o envio dos números, retorna uma sequência com resultado da combinação, se existir</ul>
  </li>
 </ol>

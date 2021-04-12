@@ -16,9 +16,9 @@ namespace AspnetCore_GraphQL.Queries
             _numbersService = numbersService;
         }
 
-        public int[] CreateNumbers(CreateNumbersInput numbersInput)
+        public int[] GetCombination(CreateNumbersInput input)
         {
-            return _numbersService.Create(numbersInput);
+            return _numbersService.Create(input);
         }
     }
 }
