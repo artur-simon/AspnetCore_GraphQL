@@ -12,8 +12,8 @@ namespace AspnetCore_GraphQL.Queries
     public class Mutation
     {
         private readonly IService.IOperationService _operationService = null;
-        private readonly IService.ISearchService _searchService = null;
-        public Mutation(IService.IOperationService numbersService, ISearchService searchService)
+        private readonly IService.IOperationService _searchService = null;
+        public Mutation(IService.IOperationService numbersService, SearchService searchService)
         {
             _operationService = numbersService;
             _searchService = searchService;

@@ -20,7 +20,7 @@ namespace AspnetCore_GraphQL.Models
     public class SearchResolver
     {
         private readonly ISearchService _searchService;
-        public SearchResolver([Service] ISearchService numberService)
+        public SearchResolver([Service] IOperationService numberService)
         {
             _searchService = numberService;
         }
