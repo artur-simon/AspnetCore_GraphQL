@@ -19,7 +19,7 @@ namespace AspnetCore_GraphQL.Services
             {
                 Target = operationInput.Target,
                 Range = operationInput.Range,
-                Date = DateTime.Now
+                Date = DateTime.Now,
                 Type = CallType.Operação
 
             };
