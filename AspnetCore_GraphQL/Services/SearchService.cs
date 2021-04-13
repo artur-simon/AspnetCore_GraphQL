@@ -8,28 +8,28 @@ using System.Threading.Tasks;
 
 namespace AspnetCore_GraphQL.Services
 {
-    public class OperationService : IService.IOperationService
+    public class SearchService : IService.IOperationService
     {
-        private IList<Operation> _operation;
-        public OperationService() { _operation = new List<Operation>(); }
+        private IList<Operation> _search;
+        public SearchService() { _search = new List<Operation>(); }
 
         public int[] Create(CreateOperationInput operationInput)
         {
             Operation operation = new Operation
             {
-                Target = operationInput.Target,
-                Range = operationInput.Range,
+                Target = 0,
+                Range = { },
                 Date = DateTime.Now,
-                Type = "Operação"
+                Type = "Consulta"
 
             };
-            _operation.Add(operation);
+            _search.Add(operation);
             return NumbersCalc.Calculate(operation.Range, operation.Target);
         }
 
         public IQueryable<Operation> GetAll()
         {
-            return _operation?.AsQueryable();
+            return _search?.AsQueryable();
         }
 
     }
