@@ -15,7 +15,7 @@ namespace AspnetCore_GraphQL.Models
             descriptor.Field(x => x.Target).Type<IntType>();
             descriptor.Field(x => x.Range).Type<ListType<IntType>>();
             descriptor.Field(x => x.Date).Type<DateTimeType>();
-            descriptor.Field(x => x.Type).Type<EnumType>();
+            descriptor.Field(x => x.Type).Type<StringType>();
         }
     }
 

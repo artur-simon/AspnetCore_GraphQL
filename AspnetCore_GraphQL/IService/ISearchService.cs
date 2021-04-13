@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace AspnetCore_GraphQL.IService
 {
-    public interface IOperationService
+    public interface ISearchService
     {
-        IQueryable<Operation> GetAll();
-        int[] Create(CreateOperationInput input);
+        IQueryable<Search> GetAll();
+        int[] Search(CreateSearchInput dates);
     }
 }
