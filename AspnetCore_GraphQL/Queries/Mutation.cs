@@ -20,5 +20,9 @@ namespace AspnetCore_GraphQL.Queries
         {
             return _operationService.Create(input);
         }
+        public int[] GetLogs(CreateOperationInput input)
+        {
+            return _operationService.Create(input);
+        }
     }
 }

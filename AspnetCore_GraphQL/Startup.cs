@@ -57,7 +57,8 @@ namespace AspnetCore_GraphQL
             {
                 endpoints.MapGet("/", async context =>
                 {
-                    await context.Response.WriteAsync("Hello from the other side!");
+                    await context.Response.WriteAsync("Hello from the other side!\n");
+                    await context.Response.WriteAsync("Example query for combinations :  mutation{ combination ( input: { target : 36, range : [32,18] } ) }");
                 });
             });
         }
