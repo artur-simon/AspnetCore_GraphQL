@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace AspnetCore_GraphQL.IService
 {
-    public interface INumbersService
+    public interface IOperationService
     {
-        IQueryable<Numbers> GetAll();
-        int[] Create(CreateNumbersInput numbersInput);
+        IQueryable<Operation> GetAll();
+        int[] Create(CreateOperationInput numbersInput);
     }
 }

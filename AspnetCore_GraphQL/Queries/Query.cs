@@ -10,12 +10,12 @@ namespace AspnetCore_GraphQL.Queries
 {
     public class Query
     {
-        private readonly IService.INumbersService _numbersService;
-        public Query(IService.INumbersService numbersService)
+        private readonly IService.IOperationService _operationService;
+        public Query(IService.IOperationService numbersService)
         {
-            _numbersService = numbersService;
+            _operationService = numbersService;
         }
         
-        public IQueryable<Numbers> ListNumbersRequest => _numbersService.GetAll();
+        public IQueryable<Operation> GetLog => _operationService.GetAll();
     }
 }

@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace AspnetCore_GraphQL
 {
@@ -26,15 +27,15 @@ namespace AspnetCore_GraphQL
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<INumbersService, NumbersService>();
-            
-            services.AddGraphQL(p => SchemaBuilder.New()
-                    .AddServices(p)
-                    .AddType<NumbersType>()
-                    .AddQueryType<Query>()
-                    .AddMutationType<Mutation>()
-                    .Create()
-            );
+            services.AddLogging();
+            services.AddSingleton<IOperationService, OperationService>();
+
+            services
+                .AddRouting()
+                .AddGraphQLServer()
+                .AddType<OperationType>()
+                .AddQueryType<Query>()
+                .AddMutationType<Mutation>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

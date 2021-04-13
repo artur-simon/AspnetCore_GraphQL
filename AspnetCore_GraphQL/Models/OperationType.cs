@@ -8,24 +8,25 @@ using System.Threading.Tasks;
 
 namespace AspnetCore_GraphQL.Models
 {
-    public class NumbersType : ObjectType<Numbers>
+    public class OperationType : ObjectType<Operation>
     {
-        protected override void Configure(IObjectTypeDescriptor<Numbers> descriptor)
+        protected override void Configure(IObjectTypeDescriptor<Operation> descriptor)
         {
             descriptor.Field(x => x.Target).Type<IntType>();
             descriptor.Field(x => x.Range).Type<ListType<IntType>>();
+            descriptor.Field(x => x.Date).Type<DateTimeType>();
         }
     }
 
     public class NumbersResolver
     {
-        private readonly INumbersService _numberService;
-        public NumbersResolver([Service] INumbersService numberService)
+        private readonly IOperationService _numberService;
+        public NumbersResolver([Service] IOperationService numberService)
         {
             _numberService = numberService;
         }
 
-        public IEnumerable<Numbers> GetNumbers()
+        public IEnumerable<Operation> GetNumbers()
         {
             return null;
         }

@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 
 namespace AspnetCore_GraphQL.Models
 {
-    public class Numbers
+    public class Operation
     {
         public int Target { get; set; }
         public int[] Range { get; set; }
+        public DateTime Date { get; set; }
     }
 }

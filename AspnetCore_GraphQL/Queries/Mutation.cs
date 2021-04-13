@@ -10,15 +10,15 @@ namespace AspnetCore_GraphQL.Queries
 {
     public class Mutation
     {
-        private readonly IService.INumbersService _numbersService = null;
-        public Mutation(IService.INumbersService numbersService)
+        private readonly IService.IOperationService _operationService = null;
+        public Mutation(IService.IOperationService numbersService)
         {
-            _numbersService = numbersService;
+            _operationService = numbersService;
         }
 
-        public int[] GetCombination(CreateNumbersInput input)
+        public int[] GetCombination(CreateOperationInput input)
         {
-            return _numbersService.Create(input);
+            return _operationService.Create(input);
         }
     }
 }
