@@ -15,16 +15,15 @@ namespace AspnetCore_GraphQL.Queries
         public Mutation(IService.IOperationService numbersService)
         {
             _operationService = numbersService;
-            _searchService = searchService;
         }
 
         public int[] GetCombination(CreateOperationInput input)
         {
-            return _operationService.Create(input);
+            return _operationService.CalculateCoins(input);
         }
-        public int[] GetLogs(CreateSearchInput input)
+        public IQueryable<Operation> GetLogs(CreateSearchInput input)
         {
-            return _searchService.Search(input);
+            return _operationService.Search(input);
         }
     }
 }

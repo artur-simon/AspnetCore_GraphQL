@@ -17,17 +17,5 @@ namespace AspnetCore_GraphQL.Models
         }
     }
 
-    public class SearchResolver
-    {
-        private readonly ISearchService _searchService;
-        public SearchResolver([Service] ISearchService numberService)
-        {
-            _searchService = numberService;
-        }
 
-        public IEnumerable<Operation> GetNumbers()
-        {
-            return null;
-        }
-    }
 }

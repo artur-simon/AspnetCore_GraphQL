@@ -13,23 +13,21 @@ namespace AspnetCore_GraphQL.Services
         private IList<Operation> _operation;
         public OperationService() { _operation = new List<Operation>(); }
 
-        public int[] Create(CreateOperationInput operationInput)
+        public int[] CalculateCoins(CreateOperationInput operationInput)
         {
-            Operation operation = new Operation
-            {
-                Target = operationInput.Target,
-                Range = operationInput.Range,
-                Date = DateTime.Now,
-                Type = "Operação"
-
-            };
+            Operation operation = new Operation { Target = operationInput.Target, Range = operationInput.Range, Date = DateTime.Now, Type = "Operação" };
             _operation.Add(operation);
-            return NumbersCalc.Calculate(operation.Range, operation.Target);
+            return CoinCalculation.Calculate(operation.Range, operation.Target);
         }
 
-        public IQueryable<Operation> GetAll()
+        public IQueryable<Operation> Search(CreateSearchInput operationInput)
         {
-            return _operation?.AsQueryable();
+            IList<Operation> returnLogs = new List<Operation>();
+            foreach (Operation op in _operation)
+                if (op.Date >= operationInput.StartDate.ToLocalTime() && op.Date <= operationInput.EndDate.ToLocalTime())
+                    returnLogs.Add(op);
+            _operation.Add(new Operation { Date = DateTime.Now, Type = "Consulta" });
+            return returnLogs.AsQueryable();
         }
 
     }

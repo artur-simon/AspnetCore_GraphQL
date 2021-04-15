@@ -34,8 +34,8 @@ namespace AspnetCore_GraphQL
                 .AddRouting()
                 .AddGraphQLServer()
                 .AddType<OperationType>()
-                .AddQueryType<Query>()
-                .AddMutationType<Mutation>();
+                .AddMutationType<Mutation>()
+                .ModifyOptions(opt =>{opt.StrictValidation = false;});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
