@@ -1,8 +1,31 @@
 ﻿@page "/"
+@using System.Net.Http
 
-Hello, all is good!
+@code {
+    private string newRangeValue;
+    private int newTargetValue;
+
+    private async Task MakeOperation()
+    {
+        try
+        {
+            int[] range = Array.ConvertAll<string, int>(newRangeValue.Split(","), s => int.TryParse(s, out var i)? i : 0);
+            var addItem = new Operation { Range = range, Target = newTargetValue };
+            await new HttpClient().PostAsJsonAsync("api/TodoItems", addItem);
+        }
+        catch (Exception e)
+        {
+
+        }
+
+    }
+}
+
+    Hello, all is good!
 <br />
-<input id="btnSend" type="button" onclick="() => Operation" value="Enviar" />
-<input id="txtRange" type="text" name="Série" />
-<input id="txtTarget" type="text" name="Alvo" />
+<input id="txtRange" type="text" placeholder="1,2,3,4" @bind="newRangeValue" />
+<input id="txtTarget" type="text" placeholder="" @bind="newTargetValue" />
+<input id="btnSend" type="button" @onclick="MakeOperation" value="Enviar" />
+<br />
+
 <br />
