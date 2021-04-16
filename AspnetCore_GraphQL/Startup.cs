@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Net.Http;
 
 namespace AspnetCore_GraphQL
 {
@@ -27,11 +29,10 @@ namespace AspnetCore_GraphQL
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddControllersWithViews();
-            services.AddRazorPages();
 
-            services.AddLogging();
             services.AddSingleton<IOperationService, OperationService>();
 
             services
@@ -55,16 +56,15 @@ namespace AspnetCore_GraphQL
                 });
             }
             app.UseGraphQL("/api");
-            app.UseRouting();
 
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
                 endpoints.MapBlazorHub();
+                endpoints.MapRazorPages();
+                endpoints.MapFallbackToPage("/_Host");
             });
         }
     }
