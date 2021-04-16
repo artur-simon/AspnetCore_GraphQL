@@ -27,6 +27,10 @@ namespace AspnetCore_GraphQL
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddServerSideBlazor();
+            services.AddControllersWithViews();
+            services.AddRazorPages();
+
             services.AddLogging();
             services.AddSingleton<IOperationService, OperationService>();
 
@@ -35,7 +39,7 @@ namespace AspnetCore_GraphQL
                 .AddGraphQLServer()
                 .AddType<OperationType>()
                 .AddMutationType<Mutation>()
-                .ModifyOptions(opt =>{opt.StrictValidation = false;});
+                .ModifyOptions(opt => { opt.StrictValidation = false; });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,13 +57,14 @@ namespace AspnetCore_GraphQL
             app.UseGraphQL("/api");
             app.UseRouting();
 
+            app.UseStaticFiles();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello from the other side!\n");
-                    await context.Response.WriteAsync("Example query for combinations :  mutation{ combination ( input: { target : 36, range : [32,18] } ) }");
-                });
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
+                endpoints.MapBlazorHub();
             });
         }
     }
