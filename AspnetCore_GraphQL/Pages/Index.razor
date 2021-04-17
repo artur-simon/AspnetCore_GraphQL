@@ -4,14 +4,15 @@
 @code {
     private string newRangeValue;
     private int newTargetValue;
+    private string resultValue;
+
 
     private async Task MakeOperation()
     {
         try
         {
-            int[] range = Array.ConvertAll<string, int>(newRangeValue.Split(","), s => int.TryParse(s, out var i)? i : 0);
-            var addItem = new Operation { Range = range, Target = newTargetValue };
-            await new HttpClient().PostAsJsonAsync("api/TodoItems", addItem);
+            int[] range = Array.ConvertAll<string, int>(newRangeValue.Split(","), s => int.TryParse(s, out var i) ? i : 0);
+            resultValue = await Models.ListViewModel.ExecuteOperation(range, newTargetValue);
         }
         catch (Exception e)
         {
@@ -27,5 +28,7 @@
 <input id="txtTarget" type="text" placeholder="" @bind="newTargetValue" />
 <input id="btnSend" type="button" @onclick="MakeOperation" value="Enviar" />
 <br />
+<label>Resultado:</label>
+<textarea id="txtResult" type="text" placeholder="Resultado" @bind="resultValue" />
 
 <br />
