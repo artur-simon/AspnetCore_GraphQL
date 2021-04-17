@@ -4,9 +4,10 @@ Projeto de avaliação para a vaga de Backend Developer na Audaces.
 
 O applicativo consiste em uma API em C# e GraphQL, com front opcional em .NetCore Blazor.
 A API, no endpoint "/api", recebe uma lista de números, chamada de Sequence, e um número alvo, chamado de Target, 
-como no exemplo: { "Sequence": [5, 20, 2, 1], "Target": 47 }. A API então checa se é possível atingir o número alvo com uma combinação dos números da sequência e, se for possível, ela retorna a combinação.
+como no exemplo: { "range": [5, 20, 2, 1], "target": 47 }. A API então checa se é possível atingir o número alvo com uma combinação dos números da sequência e, se for possível, ela retorna a combinação.
 
-A aplicação possui o(s) seguinte(s) endpoint(s):
+<ul>A aplicação possui o(s) seguinte(s) endpoint(s):</ul>
+ <li>combination</li>
 mutation 
 {
   combination
@@ -18,6 +19,19 @@ mutation
     }
   )
 }
+<li>logs</li>
+mutation{
+  logs(
+    input:{
+      startDate :  "2021-04-15",
+      endDate :  "2021-04-20"
+    }
+  )
+  {
+    type
+    date
+    
+  }
+}
+
 <ul>Para o envio dos números, retorna uma sequência com resultado da combinação, se existir</ul>
- </li>
-</ol>
