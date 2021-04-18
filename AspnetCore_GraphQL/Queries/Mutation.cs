@@ -17,11 +17,11 @@ namespace AspnetCore_GraphQL.Queries
             _operationService = numbersService;
         }
 
-        public int[] GetCombination(CreateOperationInput input)
+        public int[] GetCombination(OperationInput input)
         {
             return _operationService.CalculateCoins(input);
         }
-        public IQueryable<Operation> GetLogs(CreateSearchInput input)
+        public IQueryable<Operation> GetLogs(SearchInput input)
         {
             return _operationService.Search(input);
         }

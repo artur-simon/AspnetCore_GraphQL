@@ -9,7 +9,7 @@ namespace AspnetCore_GraphQL.IService
 {
     public interface IOperationService
     {
-        int[] CalculateCoins(CreateOperationInput input);
-        IQueryable<Operation> Search(CreateSearchInput input);
+        int[] CalculateCoins(OperationInput input);
+        IQueryable<Operation> Search(SearchInput input);
     }
 }

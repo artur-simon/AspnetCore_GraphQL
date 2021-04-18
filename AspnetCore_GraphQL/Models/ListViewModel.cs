@@ -16,19 +16,24 @@ namespace AspnetCore_GraphQL.Models
             string returnString;
             try
             {
-                var client = new GraphQLHttpClient(new GraphQLHttpClientOptions
-                {
+                var client = new GraphQLHttpClient(new GraphQLHttpClientOptions {
                     EndPoint = new Uri(Constants.BackendConstants.GraphQLApiUrl)
-                }, new NewtonsoftJsonSerializer());
-                var requestString = "mutation ($input : CreateOperationInput!) {combination(input : $input)  { }}";
+                }, new NewtonsoftJsonSerializer()); 
+                var requestString = "mutation ($input:OperationInput!){combination(input:$input) { }}";
+                var operationInput = new 
+                { input = new { 
+                    target = target,
+                    range = range
+                }};
                 var request = new GraphQLHttpRequest
                 {
                     Query = requestString,
-                    Variables = new Queries.CreateOperationInput { Target = target, Range = range },
-                    //variavel nao passa pra input
+                    Variables = operationInput
                 };
-                var response = await client.SendMutationAsync<string>(request);
-                returnString = response.ToString();
+                var response = await client.SendMutationAsync<Dictionary<string,int[]>>(request);
+                var resultString = response.Data;
+
+                returnString = String.Join(",", resultString["combination"]);
             }
             catch (Exception)
             {
