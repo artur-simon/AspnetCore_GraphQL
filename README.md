@@ -6,7 +6,8 @@ O applicativo consiste em uma API em C# e GraphQL, com front opcional em .NetCor
 A API, no endpoint "/api", recebe uma lista de números, chamada de Sequence, e um número alvo, chamado de Target, 
 como no exemplo: { "range": [5, 20, 2, 1], "target": 47 }. A API então checa se é possível atingir o número alvo com uma combinação dos números da sequência e, se for possível, ela retorna a combinação.
 
-<ol>A aplicação possui os seguintes operações:
+<ol>O endpoint possui as seguintes operações:
+
  <li>
   mutation 
   {
@@ -31,7 +32,6 @@ como no exemplo: { "range": [5, 20, 2, 1], "target": 47 }. A API então checa se
     {
       type
       date
-      
     }
   }
  </li>
