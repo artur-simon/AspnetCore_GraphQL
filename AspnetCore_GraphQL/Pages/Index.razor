@@ -16,19 +16,28 @@
         }
         catch (Exception e)
         {
-
+            resultValue = "error";
         }
 
     }
 }
+<p>
+   <h2> Welcome to the Coin Changes Changer 0.1!</h2>
+    Below you will find two input boxes: Sequence and Target. <br />
+    The values you put into sequence wil try and decompose target. <br />
+    If they are is possible to, you will see the respective decomposed values, try and see
+</p>
 
-    Hello, all is good!
-<br />
-<input id="txtRange" type="text" placeholder="1,2,3,4" @bind="newRangeValue" />
-<input id="txtTarget" type="text" placeholder="" @bind="newTargetValue" />
+<div>
+    Sequence<br />
+    <input id="txtRange" type="text" placeholder="1,2,3,4" @bind="newRangeValue" />
+</div>
+<div>
+    Target<br />
+    <input id="txtTarget" type="text" placeholder="" @bind="newTargetValue" />
+</div>
 <input id="btnSend" type="button" @onclick="MakeOperation" value="Enviar" />
 <br />
-<label>Resultado:</label>
-<textarea id="txtResult" type="text" placeholder="Resultado" @bind="resultValue" />
+<textarea id="txtResult" type="text" placeholder="Resultado" @bind="resultValue" readonly/>
 
 <br />
